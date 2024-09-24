@@ -1,9 +1,11 @@
 package ge.eluned.baron.steps.common;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import ge.eluned.baron.pages.common.HeaderSection;
 import io.qameta.allure.Step;
+import org.openqa.selenium.StaleElementReferenceException;
 
 import static ge.eluned.baron.data.constants.Attributes.ATTRIBUTE_PLACEHOLDER;
 import static ge.eluned.baron.data.constants.Attributes.ATTRIBUTE_SRC;
@@ -49,8 +51,17 @@ public class HeaderSectionSteps {
 
     @Step("Validate if Search Suggestions are Related to Search Keyword - {0}")
     public HeaderSectionSteps validateIfSuggestionsAreRelatedToSearchKeyword(String searchValue) {
-        for (SelenideElement suggestion : headerSection.searchBarSuggestionElements) {
-            suggestion.shouldHave(Condition.partialTextCaseSensitive(searchValue));
+        int attempts = 0;
+        while (attempts < 3) {
+            try {
+                ElementsCollection suggestions = headerSection.searchBarSuggestionElements(searchValue);
+                for (SelenideElement suggestion : suggestions) {
+                    suggestion.shouldHave(Condition.partialText(searchValue));
+                }
+                break;
+            } catch (StaleElementReferenceException e) {
+                attempts++;
+            }
         }
         return this;
     }

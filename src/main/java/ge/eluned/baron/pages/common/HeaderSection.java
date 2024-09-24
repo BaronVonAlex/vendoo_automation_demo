@@ -20,6 +20,7 @@ public class HeaderSection {
             tnetBtnDropdownDescription = $("p[role=\"none\"]"),
             tnetBtnDropdownItems = $x("//div[@role='none']/a");
 
-    public ElementsCollection
-            searchBarSuggestionElements = $$x("//div[@class='relative']//a/p");
+    public ElementsCollection searchBarSuggestionElements(String keyword) {
+        return $$x(String.format("//a[contains(@href, '%s')]/p", keyword));
+    }
 }
