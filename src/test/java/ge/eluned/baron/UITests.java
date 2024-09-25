@@ -13,7 +13,6 @@ import static ge.eluned.baron.data.constants.ExpectedValues.*;
 
 @Epic("User Interface Tests")
 public class UITests extends ConfigTests {
-
     protected static HeaderSectionSteps headerSectionSteps;
     protected static CommonSteps commonSteps;
     protected static HelperSteps helperSteps;
