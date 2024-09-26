@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project involves creating and executing automated tests for the web application [Vendo](https://vendo.ge) using Selenide. The tests include validating various functionalities and ensuring the robustness of the web application. The project emphasizes using Page Object Model, Fluent Interface patterns, and generating comprehensive Allure reports.
+This project involves creating and executing automated tests for the web application [Vendoo](https://vendoo.ge) using Selenide. The tests include validating various functionalities and ensuring the robustness of the web application. The project emphasizes using Page Object Model, Fluent Interface patterns, and generating comprehensive Allure reports.
 
 ## Table of Contents
 1. [Installation](#installation)
